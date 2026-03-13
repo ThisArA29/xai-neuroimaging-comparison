@@ -4,7 +4,7 @@ Settings = {
     "xai_output_path" : "your/explanation/path",
     "reference_image_path" : "reference/image/path",
     "atlas_image_path" : "harvard/oxford/cortical_and_subcortical_atlas",
-    "atlas_labels" : "harvard/oxford/cortical_and_subcortical_atlas_labels.txt",
+    "atlas_labels" : "harvard/oxford/cortical_and_subcortical_atlas_label.txt",
     "XAI" : {
         "BP" : True, "GBP" : True, "LRP" : True, "IG" : True, "IDGI" : True,
         "OS" : True, "LIME" : True, "RISE" : True,
