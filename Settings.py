@@ -1,13 +1,13 @@
 Settings = {
-    "input_path" : "/opt/home/s4043685/Project1/PPMI",
-    "model_path" : "/opt/home/s4043685/Project1/Best_model/PPMI",
-    "xai_output_path" : "/opt/home/s4043685/Project1/Explanations/PPMI",
-    "reference_image_path" : "/opt/home/s4043685/fsl/data/linearMNI/MNI152lin_T1_1mm_brain.nii.gz",
-    "atlas_imageg_path" : "/opt/home/s4043685/Project1/MyModel/Resampled_atlases/harvard_oxford_subcortical_atlas.nii.gz",
+    "input_path" : "your/input/pth",
+    "model_path" : "your/model/path",
+    "xai_output_path" : "your/explanation/path",
+    "reference_image_path" : "reference/image/path",
+    "atlas_imageg_path" : "harvard/oxford/cortical_and_subcortical_atlas",
     "XAI" : {
-        "BP" : False, "GBP" : False, "LRP" : False, "IG" : False, "IDGI" : False,
-        "OS" : False, "LIME" : True, "RISE" : False,
-        "GC++" : False, "SC" : False, "LC" : False, "OC" : False  
+        "BP" : True, "GBP" : True, "LRP" : True, "IG" : True, "IDGI" : True,
+        "OS" : True, "LIME" : True, "RISE" : True,
+        "GC++" : True, "SC" : True, "LC" : True, "OC" : True
     }
 }
 
