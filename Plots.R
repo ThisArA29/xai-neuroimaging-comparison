@@ -3,11 +3,14 @@ library(readxl)
 library(glue)
 library(scales)
 
-root_dir <- "C:/Users/pramo/OneDrive/Documents/Thisara"
+# Root folder containing Excel files
+root_dir <- "path/to/your/input/folder"
+
+# Folder where plots will be saved
 img_dir  <- file.path(root_dir, "Images")
 dir.create(img_dir, showWarnings = FALSE, recursive = TRUE)
 
-# Shared helpers
+# Convert a string like "[1,2,3]" to a numeric vector
 parse_bracket_list <- function(x) {
   if (is.null(x)) return(numeric(0))
   if (is.list(x)) x <- x[[1]]
@@ -16,6 +19,7 @@ parse_bracket_list <- function(x) {
   as.numeric(str_split(x, ",\\s*")[[1]])
 }
 
+# Convert a cell value to numeric vector
 cell_to_numvec <- function(v) {
   if (is.null(v)) return(numeric(0))
   if (is.list(v)) v <- v[[1]]
@@ -25,7 +29,7 @@ cell_to_numvec <- function(v) {
   as.numeric(str_split(v, ",\\s*")[[1]])
 }
 
-####################################Biologocal Validity#################################
+# 1. Biological validity polar heatmap
 plot_bio_validity_polar_from_workbook <- function(
     workbook = "Pct_imp.xlsx",          # or "Norm_pct_imp.xlsx"
     dataset  = "PPMI",                  # "ADNI" / "PPMI"
@@ -122,7 +126,7 @@ plot_bio_validity_polar_from_workbook("Norm_pct_imp.xlsx", "ADNI", "TN", high_va
 plot_bio_validity_polar_from_workbook("Norm_pct_imp.xlsx", "PPMI", "TP", high_val=1.0)
 plot_bio_validity_polar_from_workbook("Norm_pct_imp.xlsx", "PPMI", "TN", high_val=1.0)
 
-########################################IDV correlations##############################
+# 2. IDV correlation boxplots
 plot_idv_box_from_workbook <- function(workbook = "IDV_corrs.xlsx", dataset = "ADNI",
                                        tp_col = "TP", tn_col = "TN") {
   
@@ -152,7 +156,7 @@ plot_idv_box_from_workbook <- function(workbook = "IDV_corrs.xlsx", dataset = "A
 plot_idv_box_from_workbook("IDV_corrs.xlsx", "ADNI_all")
 plot_idv_box_from_workbook("IDV_corrs.xlsx", "PPMI_all")
 
-####################################Class Differences##############################
+# 3. Class correlation tiles
 plot_class_corr_tiles_from_workbook <- function(workbook = "Class_corr.xlsx",
                                                 sheets = c("ADNI", "PPMI"),
                                                 out_dir = img_dir,
@@ -219,7 +223,7 @@ plot_class_corr_tiles_from_workbook <- function(workbook = "Class_corr.xlsx",
 plot_class_corr_tiles_from_workbook("Class_corrs.xlsx", "ADNI_all")
 plot_class_corr_tiles_from_workbook("Class_corrs.xlsx", "PPMI_all")
 
-######################################With noise###################################
+# 4. Noise robustness plots
 plot_noise <- function(path_xlsx,
                        sheet,
                        out_dir = file.path(root_dir, "xai_plots"),
